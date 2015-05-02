@@ -21,5 +21,14 @@ WORKDIR vmdb
 RUN bundle install --without qpid
 
 RUN cp config/database.pg.yml config/database.yml
-EXPOSE 3000
+COPY startDB.sh /
+COPY createDB.sh /
+WORKDIR /
+RUN chmod +x startDB.sh
+RUN chmod +x createDB.sh
+RUN /startDB.sh
 
+EXPOSE 3000
+COPY launchManageIQ.sh /
+RUN chmod +x /launchManageIQ.sh
+CMD /launchManageIQ.sh
