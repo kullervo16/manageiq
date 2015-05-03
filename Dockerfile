@@ -28,7 +28,7 @@ RUN chmod +x startDB.sh
 RUN chmod +x createDB.sh
 RUN /startDB.sh
 
-EXPOSE 3000
+EXPOSE 3000 4000
 COPY launchManageIQ.sh /
 RUN chmod +x /launchManageIQ.sh
 CMD /launchManageIQ.sh
